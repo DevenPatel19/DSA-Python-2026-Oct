@@ -1,0 +1,121 @@
+
+"""
+Blind 75 #2: Valid Anagram
+Pattern: Arrays & Hashing — Frequency Counting
+Difficulty: Easy
+
+Problem:
+Given two strings s and t, return True if t is an anagram of s.
+Otherwise, return False.
+
+An anagram contains exactly the same characters with the same
+frequencies, but the characters may appear in a different order.
+
+Examples:
+    s = "anagram", t = "nagaram" -> True
+    s = "rat",     t = "car"     -> False
+    s = "aab",     t = "abb"     -> False
+
+Constraints:
+    - s and t contain lowercase English letters.
+    - Both strings may be empty.
+
+Requirements:
+    - Use frequency dictionaries.
+    - Do not use sorted() for this exercise.
+    - Do not use external libraries.
+    - Aim for O(n) time complexity.
+
+Learning objectives:
+    - Count character frequencies with dictionaries.
+    - Understand why sets alone are insufficient.
+    - Compare dictionaries using ==.
+    - Analyze time and auxiliary space complexity.
+"""
+
+
+def is_anagram(s: str, t: str) -> bool:
+    """
+    Determine whether t is an anagram of s.
+
+    Args:
+        s: The original string.
+        t: The string to compare against s.
+
+    Returns:
+        True if s and t are anagrams; otherwise, False.
+    """
+    # TODO 1: Handle strings of different lengths.
+    if len(s) != len(t):
+        return False
+
+    # TODO 2: Build a frequency dictionary for s.
+    s_count = {}
+    for char in s:
+        if char in s_count:
+            s_count[char] += 1
+        else:
+            s_count[char] = 1
+    # TODO 3: Build a frequency dictionary for t.
+    t_count = {}
+    for char in t:
+        if char in t_count:
+            t_count[char] += 1
+        else:
+            t_count[char] = 1
+    # TODO 4: Compare the dictionaries and return the result.
+   
+    return s_count == t_count    # if s_count ==  t_count:
+    #     return True
+    # else:
+    #     return False
+    # pass
+
+
+def run_tests() -> None:
+    """Run the test cases for is_anagram."""
+
+    test_cases = [
+        # Basic cases
+        ("anagram", "nagaram", True),
+        ("rat", "car", False),
+
+        # Different character frequencies
+        ("aab", "abb", False),
+        ("aabb", "abbb", False),
+
+        # Edge cases
+        ("", "", True),
+        ("a", "a", True),
+        ("a", "b", False),
+
+        # Different lengths
+        ("ab", "a", False),
+        ("abc", "abcd", False),
+
+        # Repeated characters
+        ("aaa", "aaa", True),
+        ("listen", "silent", True),
+    ]
+
+    passed = 0
+
+    for s, t, expected in test_cases:
+        actual = is_anagram(s, t)
+
+        try:
+            assert actual == expected, (
+                f"is_anagram({s!r}, {t!r}): "
+                f"expected {expected}, got {actual}"
+            )
+        except AssertionError as error:
+            print(f"FAIL: {error}")
+        else:
+            passed += 1
+            print(f"PASS: is_anagram({s!r}, {t!r}) -> {actual}")
+
+    print(f"\nResults: {passed}/{len(test_cases)} tests passed.")
+
+
+if __name__ == "__main__":
+    run_tests()
