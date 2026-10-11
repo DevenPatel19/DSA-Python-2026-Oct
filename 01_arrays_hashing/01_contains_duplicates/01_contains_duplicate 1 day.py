@@ -93,7 +93,14 @@ def contains_duplicate(nums: list[int]) -> bool:
     """
 
     # TODO: Implement your solution here.
-    ...
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return True
+        
+        seen.add(num)
+    return False
+
 
 
 if __name__ == "__main__":
