@@ -10,6 +10,13 @@ def two_sum(nums: list[int], target: int) -> list[int]:
         The indices of the two elements that sum to target.
     """
     # TODO: Implement the hash map approach.
+    # TODO: Implement a dictionary
+     
+    # TODO Iterate through nums
+    
+    # TODO Calculate the complement
+        
+    # TODO Check to see if complement is in dictionary
     pass
 
 

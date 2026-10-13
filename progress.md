@@ -7,25 +7,25 @@
 - **Language:** Python 3
 - **Learning environment:** VS Code
 - **Current phase:** Arrays & Hashing
-- **Last session:** October 12, 2026
-- **Current focus:** Spaced review of Valid Anagram and Two Sum
-- **Next new problem:** Group Anagrams (#4)
+- **Last session:** October 13, 2026
+- **Current focus:** Spaced review of Valid Anagram, Two Sum, and Group Anagrams
+- **Next new problem:** Top K Frequent Elements (#5)
 
 ## Overall Progress
 
-- Problems attempted: 3
-- Problems completed: 3
+- Problems attempted: 4
+- Problems completed with working implementations: 4
 - Problems mastered: 0
-- Problems awaiting review: 3
-- Study sessions completed: 4
+- Problems awaiting review: 4
+- Study sessions completed: 5
 
-**Status note:** All three problems have working implementations with passing tests. Contains Duplicate was independently reimplemented on October 11. Valid Anagram was reconstructed with some syntax guidance on October 12. Two Sum was implemented with guided hints on October 12. All three remain in the review phase; none has met all mastery criteria yet.
+**Status note:** All four attempted problems have working implementations with passing tests. Contains Duplicate was independently reimplemented on October 11. Valid Anagram and Two Sum were reconstructed with some guidance. Group Anagrams was implemented with guided hints and passed all eight tests. All four problems remain in the review phase; none has met all mastery criteria yet.
 
 ## Pattern Progress
 
 | Pattern | Progress | Status |
 |---|---:|---|
-| Arrays & Hashing | 3/9 | In progress |
+| Arrays & Hashing | 4/9 | In progress |
 | Two Pointers | 0/5 | Not started |
 | Sliding Window | 0/6 | Not started |
 | Stack | 0/7 | Not started |
@@ -47,14 +47,14 @@
 | # | Problem | Pattern | Status | Last Attempt | Next Review |
 |---:|---|---|---|---|---|
 | 1 | Contains Duplicate | Hash Set | Successful independent recall; spaced review pending | 2026-10-11 | 2026-10-18 |
-| 2 | Valid Anagram | Frequency Counting | Working implementation; guided recall; independent recall pending | 2026-10-12 | 2026-10-15 |
-| 3 | Two Sum | Hash Map | Working implementation; guided implementation; independent recall pending | 2026-10-12 | 2026-10-15 |
-| 4 | Group Anagrams | Hash Map / Frequency Counting | Not started | | |
-| 5 | Top K Frequent Elements | Hash Map / Heap | Not started | | |
-| 6 | Product of Array Except Self | Prefix / Suffix | Not started | | |
-| 7 | Valid Sudoku | Hash Set | Not started | | |
-| 8 | Encode and Decode Strings | String Encoding | Not started | | |
-| 9 | Longest Consecutive Sequence | Hash Set | Not started | | |
+| 2 | Valid Anagram | Frequency Counting | Working implementation; guided recall; independent recall pending | 2026-10-13 | 2026-10-15 |
+| 3 | Two Sum | Hash Map | Working implementation; guided implementation; independent recall pending | 2026-10-13 | 2026-10-15 |
+| 4 | Group Anagrams | Hash Map / Sorted Signature | Working implementation; guided hints; independent recall pending | 2026-10-13 | 2026-10-16 |
+| 5 | Top K Frequent Elements | Hash Map / Heap | Not started | — | — |
+| 6 | Product of Array Except Self | Prefix / Suffix | Not started | — | — |
+| 7 | Valid Sudoku | Hash Set | Not started | — | — |
+| 8 | Encode and Decode Strings | String Encoding | Not started | — | — |
+| 9 | Longest Consecutive Sequence | Hash Set | Not started | — | — |
 
 *Review dates are planned targets, not evidence that a review has occurred. Adjust them based on recall performance.*
 
@@ -107,6 +107,21 @@
 - **Auxiliary space:** O(k), where k is the number of distinct characters.
 - **Important distinction:** A set tracks unique values; a dictionary can track their frequencies.
 - **Edge case:** Equal lengths are necessary, but not sufficient, for two strings to be anagrams.
+
+### Grouping by Signature
+
+- **Recognition cue:** Do multiple inputs belong to the same group based on a shared property?
+- **Use case:** Grouping anagrams by their character composition.
+- **Signature:** `tuple(sorted(word))`
+- **Why it works:** Anagrams produce the same sorted-character tuple regardless of original character order.
+- **Dictionary structure:** Map each signature to a list of original words.
+- **Existing group:** `groups[key].append(word)`
+- **New group:** `groups[key] = [word]`
+- **Return groups:** `list(groups.values())`
+- **Why use a tuple:** Tuples containing hashable elements are hashable and can be dictionary keys; lists cannot.
+- **Time complexity:** O(nk log k), where n is the number of strings and k is the maximum string length.
+- **Auxiliary space:** O(nk) for stored signatures and grouping structures, excluding the returned output.
+- **Important distinction:** The signature is the key; the list of original words is the value. Preserve duplicates and original spellings.
 
 ## Session Log
 
@@ -207,6 +222,49 @@ See `review/day_03.md`.
 
 See `review/day_04.md` for session-specific notes, if created.
 
+### October 13, 2026 — Session 5
+
+**Problems:** Valid Anagram (#2 review), Two Sum (#3 review), and Group Anagrams (#4)
+
+#### Valid Anagram
+
+- Reconstructed the one-dictionary frequency-counting approach.
+- Used a length check to reject strings of different lengths.
+- Incremented counts for characters in the first string and decremented counts for characters in the second.
+- Checked for missing characters before decrementing.
+- Used `all(value == 0 for value in count.values())` to verify that the frequencies balanced.
+- Successfully ran all 8 tests in the current test suite.
+- Reviewed O(n) time and O(k) auxiliary space, where k is the number of distinct characters.
+- Result: working implementation; guided recall; independent recall remains pending.
+
+#### Two Sum
+
+- Reconstructed the complement strategy using `target - num`.
+- Used a dictionary to map previously seen numbers to their indices.
+- Checked for the complement before storing the current number.
+- Corrected the return value to a list of indices.
+- Successfully ran all 5 tests.
+- Reviewed expected O(n) time and O(n) auxiliary space.
+- Result: working implementation; guided implementation; independent recall remains pending.
+
+#### Group Anagrams
+
+- Identified character composition as the property shared by anagrams.
+- Used `tuple(sorted(word))` as a consistent dictionary key.
+- Grouped original words in lists stored as dictionary values.
+- Corrected the existing-group operation to `groups[key].append(word)`.
+- Corrected new-group initialization to `groups[key] = [word]`.
+- Returned the grouped lists using `list(groups.values())`.
+- Successfully ran all 8 tests, including repeated words, empty strings, and different character frequencies.
+- Reviewed expected O(nk log k) time and O(nk) auxiliary space, excluding output, where n is the number of strings and k is the maximum string length.
+- Result: working implementation with guided hints; independent recall remains pending.
+
+**Session outcome:** All three problems passed their reported tests. The user demonstrated improved understanding of frequency counting, complement lookups, sorted signatures, dictionary values, and complexity analysis. Mastery remains unconfirmed until the solutions can be reconstructed and explained independently.
+
+**Next new problem:** Top K Frequent Elements (#5).
+
+See `day05.md` for the session-specific review notes.
+
 ## Mistake Log / Concepts to Remember
 
 - A list membership check can take O(n); a set provides O(1) average lookup.
@@ -228,17 +286,27 @@ See `review/day_04.md` for session-specific notes, if created.
 - For Two Sum, calculate the complement as `target - num`.
 - Check the complement before storing the current number to avoid reusing the same index.
 - A dictionary mapping values to indices lets Two Sum return both positions in expected O(n) time.
+- For Group Anagrams, sort each word to produce a consistent signature independent of character order.
+- Use `tuple(sorted(word))` as the dictionary key because tuples are hashable when their elements are hashable.
+- Store a list of original words at each signature, not a single word or a set.
+- Append to `groups[key]`, not to the dictionary itself.
+- Initialize a new group with `[word]` so dictionary values consistently remain lists.
+- For sorting-based Group Anagrams, account for sorting each string: O(nk log k), not simply O(n).
+- Keep output-space and auxiliary-space explanations distinct when analyzing grouping algorithms.
 
 ## Next Study Session
 
-### Next Session — Planned Tasks
+## Next Study Session
 
-1. Review Valid Anagram from a blank file, without looking at the previous implementation.
-2. Review Two Sum from a blank file, without step-by-step hints.
-3. Run the existing tests and check edge cases.
-4. Explain each solution and its time and space complexity independently.
-5. Begin Blind 75 #4: Group Anagrams if review goes well.
-6. Keep Contains Duplicate scheduled for October 18, adjusting if needed based on recall.
+### Planned Tasks
+
+1. Reconstruct Valid Anagram from a blank file without viewing the previous implementation.
+2. Reconstruct Two Sum from a blank file without step-by-step hints.
+3. Reconstruct Group Anagrams from a blank file without viewing the previous implementation.
+4. Run the existing tests and check edge cases.
+5. Explain each algorithm and its time and auxiliary space complexity independently.
+6. Begin Blind 75 #5: Top K Frequent Elements when ready.
+7. Keep Contains Duplicate scheduled for October 18, adjusting if needed based on recall.
 
 ## Definition of Mastery
 
