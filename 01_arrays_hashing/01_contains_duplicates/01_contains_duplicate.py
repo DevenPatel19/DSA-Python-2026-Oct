@@ -92,7 +92,6 @@ def contains_duplicate(nums: list[int]) -> bool:
         True if a duplicate exists, otherwise False.
     """
 
-    # TODO: Implement your solution here.
      # TODO: Implement your solution here.
         # TODO  Select and Instantiate a structure to hold values (have I seen this before usually means hashset/set)
         
