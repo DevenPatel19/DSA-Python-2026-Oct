@@ -120,7 +120,7 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
     """
 
 
-    # TODO: Implement your solution here.
+# TODO: Implement your solution here.
 
 
     # TODO 1: Create a dictionary to count how often each number appears.
@@ -138,7 +138,9 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
 
 
     # TODO 5: Scan buckets from the highest frequency down to frequency 1.
-    #         Add numbers to the result until it contains k numbers.
+    
+    
+    # Add numbers to the result until it contains k numbers.
 
 
     # TODO 6: Return the result.
