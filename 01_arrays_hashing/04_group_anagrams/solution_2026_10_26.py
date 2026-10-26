@@ -50,15 +50,19 @@ def group_anagrams(strs: list[str]) -> list[list[str]]:
         A list of groups containing anagrams.
     """
     # TODO 1: Create an empty dictionary named groups.
-    
+    groups = {}
     # TODO 2: Iterate through each word in strs.
-            
+    for word in strs:
+        key = tuple(sorted(word))
     # TODO 3: Create a sorted-character tuple for the current word.
-        
+        if key in groups:
     # TODO 4: If the key exists, append the word to its list.
     #         Otherwise, create a new list containing the word.
+            groups[key].append(word)
+        else:
+            groups[key] = [word]
     # TODO 5: Return the dictionary's grouped values as a list.
-    pass
+    return list(groups.values())
 
 
 def run_tests() -> None:
