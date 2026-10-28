@@ -124,20 +124,31 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
 
 
     # TODO 1: Create a dictionary to count how often each number appears.
-
+    counts = {}
 
     # TODO 2: Iterate through nums and update each number's frequency.
-
+    for num in nums:
+        if num in counts:
+            counts[num] += 1
+        else:
+            counts[num] = 1
 
     # TODO 3: Create n + 1 buckets. Bucket i will hold all numbers
     #         that appear exactly i times.
-
+    buckets = [[] for _ in range(len(nums)+1)]
 
     # TODO 4: Place each distinct number into the bucket matching
     #         its frequency.
-
-
+    for num, freq in counts.items():
+        buckets[freq].append(num)
+        
+    result  = []
     # TODO 5: Scan buckets from the highest frequency down to frequency 1.
+    for freq in range(len(nums), 0, -1):
+        for num in buckets[freq]:
+            result.append(num)
+            if len(result) == k:
+                return result
     
     
     # Add numbers to the result until it contains k numbers.
