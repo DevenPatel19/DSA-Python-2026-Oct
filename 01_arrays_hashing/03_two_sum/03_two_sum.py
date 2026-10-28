@@ -9,7 +9,6 @@ def two_sum(nums: list[int], target: int) -> list[int]:
     Returns:
         The indices of the two elements that sum to target.
     """
-    # TODO: Implement the hash map approach.
     # TODO: Implement a dictionary
      
     # TODO Iterate through nums
