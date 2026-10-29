@@ -147,7 +147,6 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
 
 
 if __name__ == "__main__":
-    # Basic test cases
     test_cases = [
         ([1, 1, 1, 2, 2, 3], 2, {1, 2}),
         ([1], 1, {1}),
@@ -157,23 +156,33 @@ if __name__ == "__main__":
         ([1, 1, 2, 2, 3, 3], 3, {1, 2, 3}),
     ]
 
+    passed_count = 0
+    total_count = len(test_cases)
 
-    all_passed = True
-
+    print("=" * 45)
+    print("TOP K FREQUENT ELEMENTS - TEST RESULTS")
+    print("=" * 45)
 
     for nums, k, expected in test_cases:
         result = top_k_frequent(nums, k)
+
+        # Compare sets because the output order does not matter.
         passed = set(result) == expected and len(result) == k
 
+        if passed:
+            passed_count += 1
 
-        all_passed = all_passed and passed
-
+        status = "PASS" if passed else "FAIL"
 
         print(f"Input:    nums = {nums}, k = {k}")
         print(f"Expected: any order containing {sorted(expected)}")
         print(f"Result:   {result}")
-        print(f"Passed:   {passed}")
-        print("-" * 40)
+        print(f"Status:   {status}")
+        print("-" * 45)
 
+    print(f"\nTests passed: {passed_count}/{total_count}")
 
-    print(f"All tests passed: {all_passed}")
+    if passed_count == total_count:
+        print("ALL TESTS PASSED!")
+    else:
+        print(f"TESTS FAILED: {total_count - passed_count} test(s) failed.")

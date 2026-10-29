@@ -107,7 +107,6 @@ def contains_duplicate(nums: list[int]) -> bool:
          
 
 if __name__ == "__main__":
-    # Basic test cases
     test_cases = [
         ([1, 2, 3, 1], True),
         ([1, 2, 3, 4], False),
@@ -116,11 +115,31 @@ if __name__ == "__main__":
         ([1, 2, 3, 4, 5, 5], True),
     ]
 
+    passed_count = 0
+    total_count = len(test_cases)
+
+    print("=" * 40)
+    print("CONTAINS DUPLICATE - TEST RESULTS")
+    print("=" * 40)
+
     for nums, expected in test_cases:
         result = contains_duplicate(nums)
+        passed = result == expected
+
+        if passed:
+            passed_count += 1
+
+        status = "PASS" if passed else "FAIL"
 
         print(f"Input:    {nums}")
         print(f"Expected: {expected}")
         print(f"Result:   {result}")
-        print(f"Passed:   {result == expected}")
+        print(f"Status:   {status}")
         print("-" * 40)
+
+    print(f"\nTests passed: {passed_count}/{total_count}")
+
+    if passed_count == total_count:
+        print("ALL TESTS PASSED!")
+    else:
+        print(f"TESTS FAILED: {total_count - passed_count} test(s) failed.")
