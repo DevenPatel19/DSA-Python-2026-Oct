@@ -94,15 +94,17 @@ def contains_duplicate(nums: list[int]) -> bool:
 
      # TODO: Implement your solution here.
         # TODO  Select and Instantiate a structure to hold values (have I seen this before usually means hashset/set)
+    seen = set()
         
-        
-        # TODO Go through the input list and if nothing is duplicated return False
-        
+    # TODO Go through the input list and if nothing is duplicated return False
+    for num in nums:
             # TODO if the value isn't in the holding structure add it
-             
-                #TODO if the value is in the holding structure return True
-                 
-            
+        if num in seen:
+            return True
+            #TODO if the value is in the holding structure return True
+        else:
+            seen.add(num)
+    return False
              
          
 
