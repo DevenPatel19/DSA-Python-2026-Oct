@@ -167,8 +167,12 @@ def encode(strs: list[str]) -> str:
     """
 
     # TODO: Implement your encoding solution here.
+    encoded = ""
+    for word in strs:
+      encoded = encoded + str(len(word)) +"#"+ word
+    return encoded
+    # pass
 
-    pass
 
 
 def decode(s: str) -> list[str]:
@@ -183,8 +187,17 @@ def decode(s: str) -> list[str]:
     """
 
     # TODO: Implement your decoding solution here.
-
-    pass
+    decoded = []
+    i = 0
+    while i < len(s):
+        j = s.find("#", i)
+        length = int(s[i:j])
+        i = j + 1
+        j = i + length
+        word = s[i:j]
+        decoded.append(word)
+        i = j
+    return decoded
 
 
 if __name__ == "__main__":

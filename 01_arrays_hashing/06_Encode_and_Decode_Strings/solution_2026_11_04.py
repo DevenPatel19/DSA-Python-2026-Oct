@@ -172,7 +172,6 @@ def encode(strs: list[str]) -> str:
         encoded = encoded + str(len(word)) + "#" + word
     return encoded
     
-result = encode(["cat", "elephant"])
 
 
 
