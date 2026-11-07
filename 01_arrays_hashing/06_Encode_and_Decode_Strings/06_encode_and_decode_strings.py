@@ -167,7 +167,9 @@ def encode(strs: list[str]) -> str:
     """
 
     # TODO: Implement your encoding solution here.
-
+    # TODO: Setup variable; almost always output
+    # TODO: Control Flow
+    # TODO: catching & return length, delimiter and word
     pass
 
 

@@ -175,6 +175,7 @@ def encode(strs: list[str]) -> str:
 
 
 
+
 def decode(s: str) -> list[str]:
     """
     Decode a single encoded string back into a list of strings.

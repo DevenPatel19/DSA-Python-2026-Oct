@@ -184,8 +184,6 @@ def decode(s: str) -> list[str]:
         The original list of strings.
     """
 
-    
-    
     # TODO: Implement your decoding solution here.
     decoded = []
     i = 0
