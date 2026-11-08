@@ -185,7 +185,15 @@ def decode(s: str) -> list[str]:
     """
 
     # TODO: Implement your decoding solution here.
-
+    # TODO: Setup Variables (output and counters)
+    # TODO: Flow control
+        # TODO: Find delimiter
+        # TODO: Extract and convert length
+        # TODO: Move past delimiter
+        # TODO: Calculate eding index
+        # TODO: Extract and append the word
+        # TODO: Advance  to the next prefix
+    # TODO: Return output
     pass
 
 
