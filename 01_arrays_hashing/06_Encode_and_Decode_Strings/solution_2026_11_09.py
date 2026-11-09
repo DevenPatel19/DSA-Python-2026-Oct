@@ -168,10 +168,21 @@ def encode(strs: list[str]) -> str:
 
     # TODO: Implement your encoding solution here.
     # TODO: Setup variable; almost always output
+    encoded = ""
     # TODO: Control Flow
+    for word in strs:
     # TODO: catching & return length, delimiter and word
-    pass
+        encoded  += str(len(word)) + '#' + word
+    # pass
+    return encoded
+ 
+ # LINEAR time Solution O(n)
+    # parts = []
 
+    # for word in strs:
+    #     parts.append(str(len(word)) + '#' + word)
+
+    # return ''.join(parts)
 
 def decode(s: str) -> list[str]:
     """
@@ -186,15 +197,26 @@ def decode(s: str) -> list[str]:
 
     # TODO: Implement your decoding solution here.
     # TODO: Setup Variables (output and counters)
+    decoded = []
+    i = 0
     # TODO: Flow control
+    while i < len(s):
         # TODO: Find delimiter
+        j = s.find('#', i)
         # TODO: Extract and convert length
+        length = int(s[i:j])
         # TODO: Move past delimiter
-        # TODO: Calculate eding index
+        i = j + 1
+        # TODO: Calculate ending index
+        j = length + i
         # TODO: Extract and append the word
+        word = (s[i:j])
+        decoded.append(word)
         # TODO: Advance  to the next prefix
+        i=j
     # TODO: Return output
-    pass
+    # pass
+    return decoded
 
 
 if __name__ == "__main__":
