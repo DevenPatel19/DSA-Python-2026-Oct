@@ -206,22 +206,30 @@ def productExceptSelf(nums: list[int]) -> list[int]:
     """
 
     # TODO: Initialize output array.
+    answer = [1] * len(nums)
     # TODO: Initialize prefix product variable.
-
+    prefix = 1
     # TODO: First traversal - calculate prefix products.
+    for i in range(len(nums)):
         # TODO: Store the current prefix product.
+        answer[i] = prefix
         # TODO: Update the prefix product.
+        prefix *= nums[i]
+
 
     # TODO: Initialize suffix product variable.
-
+    suffix = 1
     # TODO: Second traversal - calculate suffix products.
+    for i in range(len(nums) - 1, -1, -1):
         # TODO: Multiply the current output value
         #       by the suffix product.
+        answer[i] *= suffix
         # TODO: Update the suffix product.
+        suffix *= nums[i]
 
     # TODO: Return output array.
 
-    pass
+    return answer
 
 
 if __name__ == "__main__":

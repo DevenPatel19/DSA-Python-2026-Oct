@@ -206,6 +206,7 @@ def productExceptSelf(nums: list[int]) -> list[int]:
     """
 
     # TODO: Initialize output array.
+    
     # TODO: Initialize prefix product variable.
 
     # TODO: First traversal - calculate prefix products.
