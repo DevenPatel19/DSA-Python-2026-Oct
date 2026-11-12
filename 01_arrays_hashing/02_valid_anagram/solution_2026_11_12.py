@@ -45,15 +45,24 @@ def is_anagram(s: str, t: str) -> bool:
     Returns:
         True if s and t are anagrams; otherwise, False.
     """ # TODO 1: Return False if the strings have different lengths.
-
+    if len(s) != len(t):
+        return False
         # TODO 2: Create one empty frequency dictionary.
-
+    counts = {}
         # TODO 3: Loop through s and increment each character's count.
-
+    for char in s:
+        if char in counts:
+            counts[char] += 1
+        else:
+            counts[char] = 1
         # TODO 4: Loop through t and decrement each character's count.
-
+    for char in t:
+        if char in counts:
+            counts[char] -= 1
+        else:
+            return False
        # TODO 5: Return True only if all counts are zero.
-    pass
+    all(value == 0 for value in counts.values())
 
 
 def run_tests() -> None:
