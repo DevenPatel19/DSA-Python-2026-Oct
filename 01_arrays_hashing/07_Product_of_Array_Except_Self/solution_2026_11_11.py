@@ -204,13 +204,13 @@ def productExceptSelf(nums: list[int]) -> list[int]:
         A list containing the product of all other
         elements for each corresponding index.
     """
-
+    n = len(nums)
     # TODO: Initialize output array.
-    answer = [1] * len(nums)
+    answer = [1] * n
     # TODO: Initialize prefix product variable.
     prefix = 1
     # TODO: First traversal - calculate prefix products.
-    for i in range(len(nums)):
+    for i in range(n):
         # TODO: Store the current prefix product.
         answer[i] = prefix
         # TODO: Update the prefix product.
@@ -220,7 +220,7 @@ def productExceptSelf(nums: list[int]) -> list[int]:
     # TODO: Initialize suffix product variable.
     suffix = 1
     # TODO: Second traversal - calculate suffix products.
-    for i in range(len(nums) - 1, -1, -1):
+    for i in range(n - 1, -1, -1):
         # TODO: Multiply the current output value
         #       by the suffix product.
         answer[i] *= suffix
