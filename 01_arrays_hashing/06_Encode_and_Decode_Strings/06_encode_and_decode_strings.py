@@ -190,7 +190,7 @@ def decode(s: str) -> list[str]:
         # TODO: Find delimiter
         # TODO: Extract and convert length
         # TODO: Move past delimiter
-        # TODO: Calculate eding index
+        # TODO: Calculate ending index
         # TODO: Extract and append the word
         # TODO: Advance  to the next prefix
     # TODO: Return output
