@@ -103,28 +103,53 @@ def longestConsecutive(nums: list[int]) -> int:
 # ------------------------------------------------------------
 # TEST CASES
 # ------------------------------------------------------------
-
-test_cases = [
-    ([100, 4, 200, 1, 3, 2], 4),
-    ([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9),
-    ([1, 0, 1, 2], 3),
-    ([], 0),
-    ([5], 1),
-    ([1, 2, 3, 4, 5], 5),
-    ([9, 1, 4, 7, 3, 2, 6, 8, 0], 10),
-    ([-2, -1, 0, 1], 4),
-]
+if __name__ == "__main__":
+    
+    test_cases = [
+        ([100, 4, 200, 1, 3, 2], 4),
+        ([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9),
+        ([1, 0, 1, 2], 3),
+        ([], 0),
+        ([5], 1),
+        ([1, 2, 3, 4, 5], 5),
+        ([9, 1, 4, 7, 3, 2, 6, 8, 0, 5], 10),
+        ([-2, -1, 0, 1], 4),
+    ]   
 
 
 # ------------------------------------------------------------
 # RUN TESTS
 # ------------------------------------------------------------
 
+passed_count = 0
+total_count = len(test_cases)
+
+print("=" * 50)
+print("LONGEST CONSECUTIVE SEQUENCE - TEST RESULTS")
+print("=" * 50)
+
 for nums, expected in test_cases:
     result = longestConsecutive(nums)
+    
+    passed = result == expected
+    
+    if passed:
+        passed_count += 1
+        
+    status = "PASS" if passed else "FAIL"
 
     print(f"Input:    {nums}")
     print(f"Expected: {expected}")
     print(f"Actual:   {result}")
     print(f"Passed:   {result == expected}")
     print("-" * 50)
+
+print(f"\nTests passed: {passed_count}/{total_count}")
+
+if passed_count ==  total_count:
+    print("ALL TESTS PASSED!")
+else:
+    print(
+        f"TESTS FAILED: "
+        f"{total_count - passed_count} test(s) failed."
+    )
