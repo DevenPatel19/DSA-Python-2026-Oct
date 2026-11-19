@@ -62,7 +62,7 @@ def is_anagram(s: str, t: str) -> bool:
         else:
             return False
        # TODO 5: Return True only if all counts are zero.
-    all(value == 0 for value in counts.values())
+    return all(value == 0 for value in counts.values())
 
 
 def run_tests() -> None:
