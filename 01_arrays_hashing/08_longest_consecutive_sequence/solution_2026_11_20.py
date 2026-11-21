@@ -98,7 +98,7 @@ def longestConsecutive(nums: list[int]) -> int:
             while current + 1 in numbers:
                 current += 1
                 count += 1
-            
+                
             longest = max(longest, count)
 
 
