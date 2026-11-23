@@ -95,11 +95,11 @@ def longestConsecutive(nums: list[int]) -> int:
     # --------------------------------------------------------
 
     # Your code here
-        while num + 1 in numbers:
-            current += 1
-            count += 1
+            while current + 1 in numbers:
+                current += 1
+                count += 1
             
-        longest = max(longest, count)
+            longest = max(longest, count)
 
     # --------------------------------------------------------
     # STEP 5: Return the longest sequence length
