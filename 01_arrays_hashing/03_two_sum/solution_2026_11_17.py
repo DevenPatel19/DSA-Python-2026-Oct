@@ -112,7 +112,7 @@ def two_sum(nums: list[int], target: int) -> list[int]:
     """
 
     # TODO 1: Create a dictionary to store numbers and their indices.
-    seen= {}
+    seen = {}
 
     # TODO 2: Iterate through nums using enumerate().
     for index, num in enumerate(nums):
