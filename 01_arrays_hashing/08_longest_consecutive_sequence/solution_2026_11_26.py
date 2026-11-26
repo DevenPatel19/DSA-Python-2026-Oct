@@ -70,20 +70,24 @@ def longestConsecutive(nums: list[int]) -> int:
     # --------------------------------------------------------
 
     # Your code here
-
+    longest = 0
 
     # --------------------------------------------------------
     # STEP 2: Build your data structure
     # --------------------------------------------------------
 
     # Your code here
-
+    numbers = set(nums)
 
     # --------------------------------------------------------
     # STEP 3: Find the beginning of each sequence
     # --------------------------------------------------------
 
     # Your code here
+    for num in numbers:
+        if num -1 not in numbers:
+            current = num
+            count = 1
 
 
     # --------------------------------------------------------
@@ -91,14 +95,16 @@ def longestConsecutive(nums: list[int]) -> int:
     # --------------------------------------------------------
 
     # Your code here
-
+            while current + 1 in numbers:
+                current += 1
+                count += 1
 
     # --------------------------------------------------------
     # STEP 5: Return the longest sequence length
     # --------------------------------------------------------
-
+            longest = max(longest, count)
     # Your code here
-    pass
+    return longest
 
 # ------------------------------------------------------------
 # TEST CASES
